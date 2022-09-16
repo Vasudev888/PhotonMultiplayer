@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class MenuController : MonoBehaviour
 {
     #region PrivateVariables
@@ -67,7 +68,7 @@ public class MenuController : MonoBehaviour
         PhotonNetwork.JoinOrCreateRoom(joinGameInput.text, roomOptions, TypedLobby.Default);
     }
 
-    private void OnJoinedRoom()
+    public void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel(1);
     }
