@@ -16,7 +16,7 @@ MonoBehaviour:
   VoiceAppID: 
   ChatAppID: 866d3cbc-4bb8-459a-a640-55b3a40ba897
   HostType: 1
-  PreferredRegion: 0
+  PreferredRegion: 10
   EnabledRegions: -1
   Protocol: 0
   ServerAddress: 
@@ -29,18 +29,15 @@ MonoBehaviour:
   RunInBackground: 1
   RpcList:
   - Chat
-  - ColorRpc
   - DestroyRpc
-  - DoJump
-  - Flash
   - InstantiateRpc
-  - Marco
   - PickupItemInit
-  - Polo
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
-  - TaggedPlayer
+  - FlipFalse
+  - FlipTrue
+  - SendMessage
   DisableAutoOpenWizard: 1
