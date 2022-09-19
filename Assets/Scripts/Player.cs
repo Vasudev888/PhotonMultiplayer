@@ -19,6 +19,8 @@ public class Player : Photon.MonoBehaviour
     public float moveSpeed;
     //public float speed;
     public float jumpForce;
+    public GameObject bulletObject;
+    public Transform firePos;
 
     #endregion
 
@@ -69,6 +71,7 @@ public class Player : Photon.MonoBehaviour
             CheckInput();
             Jump();
             Crouch();
+            ShootBullet();
         }
     }
 
@@ -104,6 +107,14 @@ public class Player : Photon.MonoBehaviour
         //Move Character vertically
 
 
+    }
+
+    private void ShootBullet()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Shoot();
+        }
     }
 
     private void Jump()
@@ -146,6 +157,24 @@ public class Player : Photon.MonoBehaviour
             photonView.RPC("FlipFalse", PhotonTargets.AllBuffered);
 
         }
+    }
+
+    private void Shoot()
+    {
+        if(sr.flipX == true)
+        //if (horizontalMovement > 0)
+        {
+            GameObject obj = PhotonNetwork.Instantiate(bulletObject.name, new Vector2(firePos.transform.position.x, firePos.transform.position.y), Quaternion.identity, 0);
+        }
+
+        if(sr.flipX == true)
+        //if (horizontalMovement < 0)
+        {
+            GameObject obj = PhotonNetwork.Instantiate(bulletObject.name, new Vector2(firePos.transform.position.x, firePos.transform.position.y), Quaternion.identity, 0);
+            obj.GetComponent<PhotonView>().RPC("Change_Dir_Left", PhotonTargets.AllBuffered);
+        }
+        anim.SetTrigger("ShootTrigger");
+             
     }
 
     [PunRPC]
